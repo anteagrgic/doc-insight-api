@@ -1,0 +1,10 @@
+__pycache__/
+.venv/
+.env
+storage/
+*.faiss
+*.pkl
+*.pdf
+*.png
+*.jpg
+
