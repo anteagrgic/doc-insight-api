@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        OCR_LANGS: "en,hr"   # promijeni po želji (npr. "en,hr,de")
+    environment:
+      # App config (povezano s app/config.py Field(env="..."))
+      OCR_LANGS: "en,hr"
+
+      EMBEDDING_MODEL: "intfloat/multilingual-e5-base"
+      QA_MODEL: "deepset/xlm-roberta-base-squad2"
+      CROSS_ENCODER_MODEL: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+
+      ENABLE_NER: "true"          # "false" ako ne želiš NER u /ask responseu
+      NER_MODEL: "en_core_web_sm" # može ostati default
+
+      # Cache & storage paths (moraju matcheati Dockerfile ENV)
+      HF_HOME: /models/hf
+      TRANSFORMERS_CACHE: /models/hf
+      SENTENCE_TRANSFORMERS_HOME: /models/hf
+      EASYOCR_MODULE_PATH: /models/easyocr
+    volumes:
+      - ./models:/models                 # cache za HF/EasyOCR/spaCy (persist)
+      - ./storage:/app/storage           # ako želiš lokalni storage
+    ports:
+      - "8000:8000"
