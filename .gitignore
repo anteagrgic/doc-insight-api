@@ -8,3 +8,19 @@ storage/
 *.png
 *.jpg
 
+models/
+storage/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.DS_Store
+.pytest_cache/
+.env
+
+
+# Allow test PDFs even if *.pdf is ignored above
+!test_files/
+!test_files/*.pdf
+!test_files/**/*.pdf
