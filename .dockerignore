@@ -1,0 +1,12 @@
+__pycache__/
+.venv/
+.env
+storage/
+models/
+*.faiss
+*.pkl
+*.pdf
+*.png
+*.jpg
+dist/
+build/
